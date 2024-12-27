@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Article</title>
+</head>
+    <style>
+        *{
+            box-sizing:border-box;
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            background-color: hsla(0, 8%, 90%, 0.937) ;
+        }
+        .colbacrea{
+            padding: 10px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .colbacrea h2{
+            color: gray;
+            font-size: 30px;
+            font-family: cursive;
+            
+        }
+        .colbacrea a{
+            font-size: 30px;
+            font-family: cursive;
+            color: rgb(82, 72, 72);
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        .colbacrea a:hover{
+            color: black;
+        }
+        /* design readArt */
+        .readArt{
+            
+        }
+        .readArt .cardsArt{
+            
+        }
+        .readArt .cardsArt .card{
+            
+        }
+        .readArt .cardsArt .card .titleArt h3{
+            font-size: 50px;
+            padding: 10px;
+            display: flex;
+            justify-content: right;
+        }
+        .readArt .cardsArt .card .img {
+            overflow: hidden;
+            margin: auto;
+            width: 300px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .readArt .cardsArt .card .img img{
+            width: 100%;
+        }
+        .readArt .cardsArt .card .infoArt{
+            padding: 20px;
+            margin: 20px auto;
+            font-size: 30px;
+            display: flex;
+            justify-content: right;
+        }
+        .readArt .cardsArt .card .infoArt p{
+            text-align: right;
+        }
+    </style>
+<body>
+    <div class="colbacrea">
+        <h2>Read Article</h2>
+        <a href="Articles.html">Back Home</a>
+    </div>
+    <div class="readArt">
+        <div class="cardsArt" id="ContainArt">
+            <!-- get article To Read Here -->
+        </div>
+    </div>
+  
+    
+    <script src="./assets/js/articles.js"></script>
+    <script>
+        const UrlId = new URLSearchParams(window.location.search);
+        var Id = parseInt(UrlId.get("id"));
+        
+        if(Id){
+            var FindArt = articles.find(a => a.id === Id);
+            if(FindArt){
+
+            var ContainArt = document.getElementById("ContainArt");
+            ContainArt.innerHTML = `
+            <div class="card">
+                <div class="titleArt">
+                    <h3>${FindArt.title}</h3>
+                </div>
+                <div class="img">
+                    <img src="${FindArt.img}" alt="">
+                </div>
+                <div class="infoArt">
+                    <p>
+                        ${FindArt.info}
+                    </p>
+                </div>
+            </div>
+            `;
+        }else {
+            // if article not founded back home
+            window.location.href = "index.html";
+        }
+            
+        }else {
+            // if id not number back home
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
